@@ -1,0 +1,8 @@
+body {width: 940px; margin: 0 auto 2em;}
+
+.search-banner { margin: 5em auto; border: thick solid #C99; background: #FCC; width: 35em; padding: 1em; text-align: center;}
+.search-banner h1 { color: #633; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-weight: bold; font-size: 2.5em;}
+
+.textfile_preview { margin:0; padding: 0; }
+.textfile_preview>li { border: thin solid #333; background: #EEE; list-style: none; padding: 1em; margin: 0 0 1em;}
+.textfile_preview li h3 { font-family: 'Courier New', Courier, monospace; }

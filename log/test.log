@@ -1,0 +1,131 @@
+  [4;36;1mSQL (2.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTextfiles (20090804142405)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("textfiles")[0m
+Rendering textfiles/index.html.erb
+Rendering textfiles/new.html.erb
+Rendering textfiles/show.html.erb
+  [4;36;1mTextfile Create (6.8ms)[0m   [0;1mINSERT INTO "textfiles" ("created_at", "updated_at", "accessed_at", "filepath", "content") VALUES('2009-08-04 15:26:07', '2009-08-04 15:26:07', '2009-08-04 15:26:07', 'value for filepath', 'value for content')[0m
+Rendering textfiles/edit.html.erb
+Rendering textfiles/edit.html.erb
+Rendering textfiles/new.html.erb
+Rendering textfiles/index.html.erb
+Rendering textfiles/show.html.erb
+  [4;36;1mTextfile Create (7.3ms)[0m   [0;1mINSERT INTO "textfiles" ("created_at", "updated_at", "accessed_at", "filepath", "content") VALUES('2009-08-04 15:27:01', '2009-08-04 15:27:01', '2009-08-04 15:27:01', 'value for filepath', 'value for content')[0m
+
+
+Processing TextfilesController#destroy (for 0.0.0.0 at 2009-08-04 10:27:01) [DELETE]
+  Parameters: {"id"=>"37"}
+Redirected to http://test.host/textfiles
+Completed in 11ms (DB: 7) | 302 Found [http://test.host/textfiles/37]
+
+
+Processing TextfilesController#destroy (for 0.0.0.0 at 2009-08-04 10:27:01) [DELETE]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/textfiles
+Completed in 4ms (DB: 0) | 302 Found [http://test.host/textfiles/1]
+
+
+Processing TextfilesController#update (for 0.0.0.0 at 2009-08-04 10:27:01) [PUT]
+  Parameters: {"textfile"=>{"these"=>"params"}, "id"=>"37"}
+Rendering template within layouts/textfiles
+Rendering textfiles/edit
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://test.host/textfiles/37?textfile%5Bthese%5D=params]
+
+
+Processing TextfilesController#update (for 0.0.0.0 at 2009-08-04 10:27:01) [PUT]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/textfiles
+Rendering textfiles/edit
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://test.host/textfiles/1]
+
+
+Processing TextfilesController#update (for 0.0.0.0 at 2009-08-04 10:27:01) [PUT]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/textfiles
+Rendering textfiles/edit
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://test.host/textfiles/1]
+
+
+Processing TextfilesController#update (for 0.0.0.0 at 2009-08-04 10:27:02) [PUT]
+  Parameters: {"textfile"=>{"these"=>"params"}, "id"=>"37"}
+Rendering template within layouts/textfiles
+Rendering textfiles/edit
+Completed in 8ms (View: 7, DB: 0) | 200 OK [http://test.host/textfiles/37?textfile%5Bthese%5D=params]
+
+
+Processing TextfilesController#update (for 0.0.0.0 at 2009-08-04 10:27:02) [PUT]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/textfiles/1012
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/textfiles/1]
+
+
+Processing TextfilesController#update (for 0.0.0.0 at 2009-08-04 10:27:02) [PUT]
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/textfiles/1013
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/textfiles/1]
+
+
+Processing TextfilesController#create (for 0.0.0.0 at 2009-08-04 10:27:02) [POST]
+  Parameters: {"textfile"=>{"these"=>"params"}}
+Rendering template within layouts/textfiles
+Rendering textfiles/new
+Completed in 8ms (View: 7, DB: 0) | 200 OK [http://test.host/textfiles?textfile%5Bthese%5D=params]
+
+
+Processing TextfilesController#create (for 0.0.0.0 at 2009-08-04 10:27:02) [POST]
+  Parameters: {"textfile"=>{}}
+Rendering template within layouts/textfiles
+Rendering textfiles/new
+Completed in 8ms (View: 7, DB: 0) | 200 OK [http://test.host/textfiles?]
+
+
+Processing TextfilesController#create (for 0.0.0.0 at 2009-08-04 10:27:02) [POST]
+  Parameters: {"textfile"=>{"these"=>"params"}}
+Redirected to http://test.host/textfiles/1016
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/textfiles?textfile%5Bthese%5D=params]
+
+
+Processing TextfilesController#create (for 0.0.0.0 at 2009-08-04 10:27:02) [POST]
+  Parameters: {"textfile"=>{}}
+Redirected to http://test.host/textfiles/1017
+Completed in 5ms (DB: 0) | 302 Found [http://test.host/textfiles?]
+
+
+Processing TextfilesController#edit (for 0.0.0.0 at 2009-08-04 10:27:02) [GET]
+  Parameters: {"id"=>"37"}
+Rendering template within layouts/textfiles
+Rendering textfiles/edit
+Completed in 7ms (View: 7, DB: 0) | 200 OK [http://test.host/textfiles/37/edit]
+
+
+Processing TextfilesController#new (for 0.0.0.0 at 2009-08-04 10:27:02) [GET]
+Rendering template within layouts/textfiles
+Rendering textfiles/new
+Completed in 7ms (View: 7, DB: 0) | 200 OK [http://test.host/textfiles/new]
+
+
+Processing TextfilesController#show (for 0.0.0.0 at 2009-08-04 10:27:02) [GET]
+  Parameters: {"id"=>"37"}
+Rendering template within layouts/textfiles
+Rendering textfiles/show
+Completed in 8ms (View: 7, DB: 0) | 200 OK [http://test.host/textfiles/37]
+
+
+Processing TextfilesController#index (for 0.0.0.0 at 2009-08-04 10:27:02) [GET]
+Rendering template within layouts/textfiles
+Rendering textfiles/index
+Completed in 8ms (View: 7, DB: 0) | 200 OK [http://test.host/textfiles]

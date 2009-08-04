@@ -1,0 +1,21 @@
+<div class="search-banner">
+	<h1>WADRC Readme Search:</h1>
+	<% form_tag textfiles_path, :method => 'get' do %>
+	  <p>
+	    <%= text_field_tag :search, params[:search] %>
+	    <%= submit_tag "Search", :name => nil %>
+	  </p>
+	<% end %>
+</div>
+
+<ul class="textfile_preview">
+<% @textfiles.each do |textfile| %>
+  <li>
+	<h3><%=h textfile.filepath %></h3>
+    <%= RedCloth.new(textfile.content).to_html %>
+    <p><%= link_to 'Show', textfile %> | <%= link_to 'Edit', edit_textfile_path(textfile) %> | <%= link_to 'Destroy', textfile, :confirm => 'Are you sure?', :method => :delete %></p>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'New textfile', new_textfile_path %>

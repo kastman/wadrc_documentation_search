@@ -1,0 +1,7 @@
+<h2><%=h @textfile.filepath %></h2>
+<%= RedCloth.new(@textfile.content).to_html %>
+
+<p>Accessed at: <%=h @textfile.accessed_at %></p>
+
+<%= link_to 'Edit', edit_textfile_path(@textfile) %> |
+<%= link_to 'Back', textfiles_path %>
