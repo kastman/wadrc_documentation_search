@@ -2,7 +2,7 @@ class TextfilesController < ApplicationController
   # GET /textfiles
   # GET /textfiles.xml
   def index
-    @textfiles = Textfile.search(params[:search])
+    @textfiles = Textfile.search(params[:search]).sort_by(&:filepath)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,16 +1,24 @@
 require 'find'
 module Find
-  def match(*paths)
+  def match(paths)
     matched=[]
-    find(*paths) do |path| 
-      p path
-      if yield path then
-        if File.file?(path) && File.readable?(path) then file_content = open(path) { |f| f.read } end
-        #file_content = nil
-        matched << { :path => path, :file_content => file_content }
+    excluded_paths = Set.new(paths[:excluded_paths])
+    excluded_paths.each {|path| puts "Excluding #{path}" }
+
+    paths[:include_paths].each do |include_path|
+      find(include_path) do |path| 
+        puts path
+        if excluded_paths.include?(path)
+          puts "Pruned #{path}"
+          Find.prune 
+        end
+        if yield path then
+          if File.file?(path) && File.readable?(path) then file_content = open(path) { |f| f.read } end
+          matched << { :path => path, :file_content => file_content }
+        end
       end
+      return matched
     end
-    return matched
   end
   module_function :match
 end
