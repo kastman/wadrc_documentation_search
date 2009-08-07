@@ -15,8 +15,8 @@ describe "/textfiles/edit.html.erb" do
     render
 
     response.should have_tag("form[action=#{textfile_path(@textfile)}][method=post]") do
-      with_tag('input#textfile_filepath[name=?]', "textfile[filepath]")
-      with_tag('input#textfile_content[name=?]', "textfile[content]")
+      #with_tag('input#textfile_filepath[name=?]', "textfile[filepath]")
+      with_tag('#textfile_content[name=?]', "textfile[content]")
     end
   end
 end

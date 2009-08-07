@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  filepath: MyString
-  content: MyString
+  filepath: MyString1
+  content: MyString1
   accessed_at: 2009-08-04 09:24:05
 
 two:
-  filepath: MyString
-  content: MyString
+  filepath: MyString2
+  content: MyString2
   accessed_at: 2009-08-04 09:24:05

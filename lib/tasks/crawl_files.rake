@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../textfile_tasks'
 
-INCLUDED_PATHS = ['/Data/vtrak1/']
+INCLUDED_PATHS = ['/Data/vtrak1/', '/Data/data4/', '/Data/data5/','/Data/data7']
 EXCLUDED_PATHS = ['/Data/vtrak1/SysAdmin/home','/Data/vtrak1/SysAdmin/apps','/Data/vtrak1/SysAdmin/lab_software_downloads','/Data/vtrak1/data1/apps', '/Data/vtrak1/data1/fm_apps']
 
 namespace :crawler do

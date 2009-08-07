@@ -3,7 +3,7 @@ class Textfile < ActiveRecord::Base
   validates_uniqueness_of :filepath
   
   after_save :write_to_filesystem
-  after_destroy :delete_from_filesystem
+  #after_destroy :delete_from_filesystem
   
   def abridged_content(n = 1)
     "#{content.split('. ').first(n).join('. ')}."
@@ -25,10 +25,12 @@ class Textfile < ActiveRecord::Base
     end
   end
   
+=begin
   def delete_from_filesystem
     if File.writable?(self.filepath)
       File.delete(self.filepath)
     end
   end
+=end
   
 end

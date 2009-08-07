@@ -18,7 +18,6 @@ describe "/textfiles/index.html.erb" do
 
   it "renders a list of textfiles" do
     render
-    response.should have_tag("tr>td", "value for filepath".to_s, 2)
-    response.should have_tag("tr>td", "value for content".to_s, 2)
+    response.should have_tag("li", :text => "value for filepath")
   end
 end
