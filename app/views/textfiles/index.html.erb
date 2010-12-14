@@ -1,8 +1,18 @@
-<ul>
-	<% @textfiles.each do |textfile| %>
-	  <li><%= link_to textfile.filepath, textfile %></li>
-	<% end %>
-</ul>
+<table>
+	<tr style="text-align: left;">
+		<th>Filepath</th>
+		<th>Owner</th>
+	</tr>
+	
+<% @textfiles.each do |textfile| %>
+  <tr>
+  	<td><%= link_to textfile.filepath, textfile %></td>
+		<td><span style="color: #666"><%= textfile.owner %></span></td>
+  </tr>
+<% end %>
 
+</table>
 
-<%= link_to 'New textfile', new_textfile_path %>
+<p>
+	<%= link_to 'New textfile', new_textfile_path %>
+</p>

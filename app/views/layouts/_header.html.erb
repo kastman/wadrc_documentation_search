@@ -1,5 +1,5 @@
 <div class="search-banner">
-	<h1>WADRC Readmes</h1>
+	<h1><%= link_to "WADRC Readmes", root_path %></h1>
 	<% form_tag textfiles_path, :method => 'get' do %>
 	  <p>
 	    <%= text_field_tag :search, params[:search] %>

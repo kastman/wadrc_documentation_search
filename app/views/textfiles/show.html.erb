@@ -1,8 +1,7 @@
 <h2><%=h @textfile.filepath %></h2>
 <%= RedCloth.new(@textfile.content).to_html %>
 
-<p>Accessed at: <%=h @textfile.accessed_at %></p>
+<p style="color: #666; font-size: 12px;">Owned by: <%=h @textfile.owner %> | Accessed at: <%=h @textfile.accessed_at %></p>
 
 <%= link_to 'Edit', edit_textfile_path(@textfile) %> |
-<%= link_to 'Destroy', @textfile, :confirm => 'Are you sure?', :method => :delete %> |
-<%= link_to 'Back', textfiles_path %>
+<%= link_to 'Show All', textfiles_path %>

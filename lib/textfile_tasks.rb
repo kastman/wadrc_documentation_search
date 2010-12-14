@@ -1,4 +1,7 @@
+require 'ptools' # Used to test if a file is binary or not.
+require 'etc'
 require 'find'
+
 module Find
   def match(paths, &block)
     matched=[]
@@ -21,16 +24,17 @@ module Find
         end
         STDOUT.flush
       end
-      return matched
     end
+    puts
+    return matched
   end
   
   def matches?(path)
     # puts path
 
     if yield path then
-      if File.file?(path) && File.readable?(path) then file_content = open(path) { |f| f.read } end
-      return { :path => path, :file_content => file_content }
+      if File.file?(path) && File.readable?(path) && ! File.binary?(path) then file_content = open(path) { |f| f.read } end
+      return { :path => path, :file_content => file_content, :owner => Etc.getpwuid(File.stat(path).uid).name}
     end
   end
 

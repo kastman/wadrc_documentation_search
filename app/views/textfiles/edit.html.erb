@@ -16,5 +16,8 @@
   </p>
 <% end %>
 
+<p>Remember, this will change the file on the filesystem!</p>
+
 <%= link_to 'Show', @textfile %> |
-<%= link_to 'Back', textfiles_path %>
+<%= link_to 'Delete Textfile entry from Database', @textfile, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'Show All', textfiles_path %>

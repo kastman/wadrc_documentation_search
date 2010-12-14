@@ -1,7 +1,6 @@
 require File.dirname(__FILE__) + '/../textfile_tasks'
 
 INCLUDED_PATHS = ['/Data/vtrak1/', '/Data/data4/', '/Data/data5/','/Data/data7']
-# INCLUDED_PATHS = ['/Data/vtrak1/analyses/']
 EXCLUDED_PATHS = ['/Data/vtrak1/SysAdmin/home','/Data/vtrak1/SysAdmin/apps','/Data/vtrak1/SysAdmin/lab_software_downloads','/Data/vtrak1/data1/apps', '/Data/vtrak1/data1/fm_apps']
 
 namespace :crawler do
@@ -10,9 +9,10 @@ namespace :crawler do
     files = Find.match(:include_paths => INCLUDED_PATHS, :excluded_paths => EXCLUDED_PATHS) { |p| File.split(p)[1] =~ /(.*README.*|.*NOTE.*)/i }
     files.each do |file| 
       begin 
-        f = Textfile.find_or_create_by_filepath(:filepath => file[:path], :content => file[:file_content], :accessed_at => Time.now )
+        f = Textfile.find_or_initialize_by_filepath(:filepath => file[:path], :content => file[:file_content], :owner => file[:owner], :accessed_at => Time.now )
+        verb = f.new_record? ? "Saved" : "Updated"
         if f.save
-          puts "Saved #{file[:path]}..."
+          puts "#{verb} #{file[:path]}..."
         else
           raise StandardError, f.errors.full_messages.join(", ")
         end
