@@ -1,2 +1,11 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+// Live Update of Textfiles Table
+// $(function() {
+//   $("#textfiles_table th a, #textfiles_table .pagination a").live("click", function() {
+//     $.getScript(this.href);
+//     return false;
+//   });
+//   $("#textfiles_search input").keyup(function() {
+//     $.get($("#textfiles_search").attr("action"), $("#textfiles_search").serialize(), null, "script");
+//     return false;
+//   });
+// });

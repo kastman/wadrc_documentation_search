@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090804142405) do
+ActiveRecord::Schema.define(:version => 20101213231154) do
 
   create_table "textfiles", :force => true do |t|
     t.string   "filepath"
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20090804142405) do
     t.datetime "accessed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "owner"
   end
 
 end

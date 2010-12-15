@@ -1,5 +1,5 @@
 <h2><%=h @textfile.filepath %></h2>
-<%= RedCloth.new(@textfile.content).to_html %>
+<%= Maruku.new(@textfile.content).to_html.html_safe %>
 
 <p style="color: #666; font-size: 12px;">Owned by: <%=h @textfile.owner %> | Accessed at: <%=h @textfile.accessed_at %></p>
 

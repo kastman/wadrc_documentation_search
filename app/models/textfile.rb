@@ -14,9 +14,9 @@ class Textfile < ActiveRecord::Base
   # Search Content, Filepath or Owner for Search Term
   def self.search(search)
     if search
-      find(:all, :conditions => ['content LIKE ? OR filepath LIKE ? OR owner LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+      where(['content LIKE ? OR filepath LIKE ? OR owner LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
     else
-      find(:all)
+      scoped
     end
   end
   

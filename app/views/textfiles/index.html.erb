@@ -1,17 +1,5 @@
-<table>
-	<tr style="text-align: left;">
-		<th>Filepath</th>
-		<th>Owner</th>
-	</tr>
-	
-<% @textfiles.each do |textfile| %>
-  <tr>
-  	<td><%= link_to textfile.filepath, textfile %></td>
-		<td><span style="color: #666"><%= textfile.owner %></span></td>
-  </tr>
-<% end %>
+<div id="textfiles_table"><%= render :partial => 'textfiles_table' %></div>
 
-</table>
 
 <p>
 	<%= link_to 'New textfile', new_textfile_path %>
