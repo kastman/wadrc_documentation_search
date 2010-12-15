@@ -41,6 +41,7 @@ class TextfilesController < ApplicationController
   # POST /textfiles.xml
   def create
     @textfile = Textfile.new(params[:textfile])
+    @textfile.needs_fs_update = true
 
     respond_to do |format|
       if @textfile.save
@@ -58,6 +59,7 @@ class TextfilesController < ApplicationController
   # PUT /textfiles/1.xml
   def update
     @textfile = Textfile.find(params[:id])
+    @textfile.needs_fs_update = true
 
     respond_to do |format|
       if @textfile.update_attributes(params[:textfile])

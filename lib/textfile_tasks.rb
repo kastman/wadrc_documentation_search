@@ -1,4 +1,8 @@
-require 'ptools' # Used to test if a file is binary or not.
+begin
+  require 'ptools' # Used to test if a file is binary or not.
+rescue LoadError => e
+  puts e; puts "Install with gem install #{e}"
+end
 require 'etc'
 require 'find'
 
@@ -34,12 +38,21 @@ module Find
 
     if yield path then
       if File.file?(path) && File.readable?(path) && ! File.binary?(path) then file_content = open(path) { |f| f.read } end
-      return { :path => path, :file_content => file_content, :owner => Etc.getpwuid(File.stat(path).uid).name}
+      return { :path => path, :file_content => file_content, :owner => file_owner(path)}
     end
   end
+  
+  def file_owner(path)
+    begin
+      Etc.getpwuid(File.stat(path).uid).name
+    rescue StandardError => e
+      File.stat(path).uid
+    end
+  end
+      
 
 
-  module_function :match, :matches?
+  module_function :match, :matches?, :file_owner
 
 end
 
