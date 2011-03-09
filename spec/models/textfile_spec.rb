@@ -5,6 +5,8 @@ describe Textfile do
     @valid_attributes = {
       :filepath => "value for filepath",
       :content => "value for content",
+      :owner => 'erik',
+      :modified_at => Time.now,
       :accessed_at => Time.now
     }
   end

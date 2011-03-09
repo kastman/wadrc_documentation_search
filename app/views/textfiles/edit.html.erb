@@ -1,15 +1,11 @@
 <h2><%=h @textfile.filepath %></h2>
 
 <%= form_for(@textfile) do |f| %>
-  <%= f.error_messages %>
+  <%#= f.error_messages %>
 
   <p>
 	<%= f.label :content %><br />
     <%= f.text_area :content, :cols => 80 %>
-  </p>
-  <p>
-    <%= f.label :accessed_at %><br />
-    <%= f.datetime_select :accessed_at %>
   </p>
   <p>
     <%= f.submit 'Update' %>
@@ -21,3 +17,39 @@
 <%= link_to 'Show', @textfile %> |
 <%= link_to 'Delete Textfile entry from Database', @textfile, :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Show All', textfiles_path %>
+
+<h3><%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax' %>  <%= link_to 'Reference', 'http://warpedvisions.org/projects/markdown-cheat-sheet' %></h3>
+<pre>
+	# Header 1 #
+	## Header 2 ##
+	### Header 3 ###             (Hashes on right are optional)
+	#### Header 4 ####
+	##### Header 5 #####
+
+	## Markdown plus h2 with a custom ID ##         {#id-goes-here}
+	[Link back to H2](#id-goes-here)
+
+	This is a paragraph, which is text surrounded by whitespace. Paragraphs can be on one 
+	line (or many), and can drone on for hours.  
+
+	Here is a Markdown link to [Warped](http://warpedvisions.org), and a literal . 
+	Now some SimpleLinks, like one to [google] (automagically links to are-you-
+	feeling-lucky), a [wiki: test] link to a Wikipedia page, and a link to 
+	[foldoc: CPU]s at foldoc.  
+
+	Now some inline markup like _italics_,  **bold**, and `code()`. Note that underscores in 
+	words are ignored in Markdown Extra.
+
+	![picture alt](/images/photo.jpeg "Title is optional")     
+
+	> Blockquotes are like quoted text in email replies
+	>> And, they can be nested
+
+	* Bullet lists are easy too
+	- Another one
+	+ Another one
+
+	1. A numbered list
+	2. Which is numbered
+	3. With periods and a space	
+</pre>

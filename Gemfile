@@ -8,11 +8,16 @@ gem 'rails', '3.0.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # gem 'RedCloth'
-gem 'maruku'
+# gem 'maruku'
+# gem 'rdiscount'
+gem 'bluecloth'
 gem 'whenever', :require => false
 gem 'ptools'
-gem 'will_paginate', '~> 3.0.pre2'
+# gem 'will_paginate', '~> 3.0.pre2'
 gem 'jquery-rails'
+gem 'kaminari'
+gem 'meta_where'
+gem 'meta_search'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -33,6 +38,9 @@ gem 'jquery-rails'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+group :development, :test do
+  gem 'test-unit', '1.2.3'
+  gem 'rspec-rails'
+  gem 'webrat'
+  gem 'factory_girl_rails', '~>1.0.1'
+end

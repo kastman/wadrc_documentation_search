@@ -1,36 +1,33 @@
 class Textfile < ActiveRecord::Base
-  validates_presence_of :filepath, :content, :owner, :accessed_at
+  validates_presence_of :filepath, :content, :owner, :accessed_at, :modified_at
   validates_uniqueness_of :filepath
   
-  after_update :write_to_filesystem if @needs_fs_update
+  before_save :write_to_filesystem
   #after_destroy :delete_from_filesystem
+
   
   attr_accessor :needs_fs_update
+  
+  def abridged_filepath
+    filepath.ellipsisize(90)
+  end
   
   def abridged_content(n = 1)
     "#{content.split('. ').first(n).join('. ')}."
   end
   
-  # Search Content, Filepath or Owner for Search Term
-  def self.search(search)
-    if search
-      where(['content LIKE ? OR filepath LIKE ? OR owner LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
-    else
-      scoped
-    end
-  end
   
   # Writes @content to the filesystem, so you can update textfiles from the 
   # Rails app itself.
   def write_to_filesystem
-    if open(filepath, 'r') { |f| f.read } != content
+    if @needs_fs_update 
       if File.writable?(File.split(self.filepath)[0])
         #open(self.filepath, 'w') { |f| f << self.to_yaml }
         open(self.filepath, 'w') { |f| f << self.content }
+        modified_at = Time.now
+        # File.chown(Etc.getpwnam(owner).uid, nil, filepath)
       else raise IOError, "Unable to write to file."
       end
-    else
-      # File content hasn't changed, only "accessed_at"
     end
   end
   

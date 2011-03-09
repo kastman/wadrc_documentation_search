@@ -7,6 +7,7 @@ require 'etc'
 require 'find'
 
 module Find
+  TEMPFILE_EXP = /(\._|\~$)/
   def match(paths, &block)
     matched=[]
     excluded_paths = Set.new(paths[:excluded_paths])
@@ -36,9 +37,15 @@ module Find
   def matches?(path)
     # puts path
 
-    if yield path then
-      if File.file?(path) && File.readable?(path) && ! File.binary?(path) then file_content = open(path) { |f| f.read } end
-      return { :path => path, :file_content => file_content, :owner => file_owner(path)}
+    begin
+      unless path =~ TEMPFILE_EXP
+        if yield path then
+          if File.file?(path) && File.readable?(path) && ! File.binary?(path) then file_content = open(path) { |f| f.read } end
+          return { :path => path, :file_content => file_content, :owner => file_owner(path), :modified_at => File.mtime(path) }
+        end
+      end
+    rescue StandardError => e
+      puts "Error matching #{path}; #{e}"
     end
   end
   

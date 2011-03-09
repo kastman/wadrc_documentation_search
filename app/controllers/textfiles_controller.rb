@@ -3,7 +3,8 @@ class TextfilesController < ApplicationController
   # GET /textfiles
   # GET /textfiles.xml
   def index
-    @textfiles = Textfile.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 50, :page => params[:page])
+    @search = Textfile.search(params[:search])
+    @textfiles = @search.relation.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +16,7 @@ class TextfilesController < ApplicationController
   # GET /textfiles/1
   # GET /textfiles/1.xml
   def show
+    @search = Textfile.search(params[:search])
     @textfile = Textfile.find(params[:id])
 
     respond_to do |format|
@@ -44,6 +46,7 @@ class TextfilesController < ApplicationController
   def create
     @textfile = Textfile.new(params[:textfile])
     @textfile.needs_fs_update = true
+    @textfile.modified_at = Time.now
 
     respond_to do |format|
       if @textfile.save
@@ -62,6 +65,7 @@ class TextfilesController < ApplicationController
   def update
     @textfile = Textfile.find(params[:id])
     @textfile.needs_fs_update = true
+    @textfile.modified_at = Time.now
 
     respond_to do |format|
       if @textfile.update_attributes(params[:textfile])
@@ -88,10 +92,10 @@ class TextfilesController < ApplicationController
   end
   
   def sort_column
-    Textfile.column_names.include?(params[:sort]) ? params[:sort] : "filepath"
+    Textfile.column_names.include?(params[:sort]) ? params[:sort] : "modified_at"
   end
   
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 end

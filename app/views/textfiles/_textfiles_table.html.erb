@@ -1,16 +1,17 @@
 <table class="pretty">
 	<tr style="text-align: left;">
-		<th><%= sortable "filepath" %></th>
-		<th><%= sortable "owner" %></th>
+		<th><%= sort_link @search, :filepath %></th>
+		<th><%= sort_link @search, :owner %></th>
+		<th class="timestamp"><%= sort_link @search, :modified_at %></th>
 	</tr>
-	
 <% @textfiles.each do |textfile| %>
   <tr>
-  	<td><%= link_to textfile.filepath, textfile %></td>
-		<td><span style="color: #666"><%= textfile.owner %></span></td>
+  	<td class="filepath"><%= link_to textfile.abridged_filepath, textfile %></td>
+		<td class="owner"><%= textfile.owner %></td>
+		<td class="timestamp"><%= textfile.modified_at.to_s(:long_ordinal) %></td>
   </tr>
 <% end %>
 
 </table>
 
-<%= will_paginate @products %>
+<%= paginate @textfiles %>

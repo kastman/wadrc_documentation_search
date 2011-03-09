@@ -4,20 +4,17 @@ describe "/textfiles/index.html.erb" do
   include TextfilesHelper
 
   before(:each) do
-    assigns[:textfiles] = [
-      stub_model(Textfile,
-        :filepath => "value for filepath",
-        :content => "value for content"
-      ),
-      stub_model(Textfile,
-        :filepath => "value for filepath",
-        :content => "value for content"
-      )
-    ]
+    @textfiles = [ Factory.create(:textfile, :filepath => "value for filepath"), Factory.create(:textfile) ]
+    @textfiles.stub!(:current_page).and_return 1
+    @textfiles.stub!(:num_pages).and_return 2
+    @textfiles.stub!(:limit_value).and_return 1,1
+    assigns[:textfiles] = @textfiles
+    
+    assigns[:search] = @search = Textfile.search({})
   end
 
   it "renders a list of textfiles" do
     render
-    response.should have_tag("li", :text => "value for filepath")
+    rendered.should contain("value for filepath")
   end
 end

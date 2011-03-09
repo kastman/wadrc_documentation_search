@@ -4,6 +4,9 @@ describe TextfilesController do
 
   def mock_textfile(stubs={})
     @mock_textfile ||= mock_model(Textfile, stubs)
+    @mock_textfile.stub!(:needs_fs_update=)
+    @mock_textfile.stub!(:modified_at=)
+    return @mock_textfile
   end
 
   describe "GET index" do
