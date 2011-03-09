@@ -38,6 +38,7 @@ class TextfilesController < ApplicationController
 
   # GET /textfiles/1/edit
   def edit
+    @search = Textfile.search(params[:search])
     @textfile = Textfile.find(params[:id])
   end
 

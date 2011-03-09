@@ -2,6 +2,7 @@ body { background: #6699CC;}
 
 #main-container {width: 940px; margin: 0 auto 2em; padding-bottom: 1em; background: white;}
 #content { padding: 1em; }
+#content h2 {word-wrap: break-word;}
 
 a, a.visited { color: #045290;}
 
