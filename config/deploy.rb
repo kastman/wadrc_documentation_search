@@ -30,4 +30,11 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+  
+  after "deploy:symlink", "deploy:update_crontab"
+  
+  desc "Update the crontab with Whenever."
+  task :update_crontab do
+    run "whenever --write-crontab wadrc_documentation_search -f #{File.join(release_path, 'config', 'schedule.rb')}"
+  end
 end
