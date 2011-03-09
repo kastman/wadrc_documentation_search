@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require "whenever/capistrano"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -29,12 +30,5 @@ namespace :deploy do
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-  
-  after "deploy:symlink", "deploy:update_crontab"
-  
-  desc "Update the crontab with Whenever."
-  task :update_crontab do
-    run "whenever --write-crontab wadrc_documentation_search -f #{File.join(release_path, 'config', 'schedule.rb')}"
   end
 end
