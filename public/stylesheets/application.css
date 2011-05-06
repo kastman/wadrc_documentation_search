@@ -15,7 +15,7 @@ a, a.visited { color: #045290;}
 .filepath {word-wrap: break-word; }
 .owner { color: #666 ;}
 .timestamp { white-space: nowrap; }
-blockquote, pre {color: #333; background: #EEE; border: solid 1px #CCC; padding: 5px;}
+blockquote, pre {color: #333; background: #EEE; border: solid 1px #CCC; padding: 5px; overflow-x: auto;}
 
 .afs-charis-sil, h1, h2, h3, h4 { font-family: "Charis SIL", "Georgia", "Palatino", "Times New Roman", "Baskerville", "Hoefler Text", serif; ;}
 

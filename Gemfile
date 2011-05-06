@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~>3.0.3'
+gem 'rails', '~>3.0.7'
 
 # Deploy with Capistrano
 gem 'capistrano'
@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_where'
 gem 'meta_search'
+gem 'ruby-rtf'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -35,6 +36,7 @@ gem 'meta_search'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+  gem 'ZenTest'
   gem 'test-unit', '1.2.3'
   gem 'rspec-rails'
   gem 'webrat'

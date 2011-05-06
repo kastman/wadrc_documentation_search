@@ -3,7 +3,12 @@ class TextfilesController < ApplicationController
   # GET /textfiles
   # GET /textfiles.xml
   def index
-    @search = Textfile.search(params[:search])
+    if !params[:search].blank? && !params[:search][:meta_sort].blank?
+      @search = Textfile.unscoped.search(params[:search])
+    else
+      @search = Textfile.search(params[:search])
+    end
+    
     @textfiles = @search.relation.page(params[:page])
 
     respond_to do |format|

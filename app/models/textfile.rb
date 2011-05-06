@@ -4,6 +4,8 @@ class Textfile < ActiveRecord::Base
   
   before_save :write_to_filesystem
   #after_destroy :delete_from_filesystem
+  
+  default_scope order('modified_at DESC')
 
   
   attr_accessor :needs_fs_update

@@ -2,8 +2,12 @@
 <% case File.extname(@textfile.filepath) %>
 <% when /md|markdown|rdoc/i %>
 	<%= BlueCloth.new(@textfile.content).to_html.html_safe %>
+<% when /rtf/i %>
+	<% str = '' %>
+	<%= puts RubyRTF::Parser.new.parse(@textfile.content).sections.each {|s| puts format(str, s)} %>
+	<%= str.html_safe %>
 <% else %>
-	<div class="code"><%= @textfile.content.html_safe %></div>
+	<pre class="code"><%= @textfile.content.html_safe %></pre>
 <% end %>
 
 <p style="color: #666; font-size: 12px;">Owned by: <%=h @textfile.owner %> | Modified at: <%=h @textfile.modified_at %> | Accessed at: <%=h @textfile.accessed_at %></p>
