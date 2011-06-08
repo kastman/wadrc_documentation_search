@@ -138,6 +138,7 @@ DEPENDENCIES
   bluecloth
   capistrano
   factory_girl_rails (~> 1.0.1)
+  i18n
   jquery-rails
   kaminari
   meta_search
