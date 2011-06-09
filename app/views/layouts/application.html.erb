@@ -12,8 +12,14 @@
 
 <div id="main-container">
 	<%= render :partial => 'layouts/header' %>
-	<p style="color: green"><%= flash[:notice] %></p>
 	<div id="content">
+		<% unless flash.empty? %>
+			<div id="flash">
+	      <% flash.each do |key, msg| %>
+	      <%= content_tag :p, msg, :class => key %>
+	      <% end %>
+	    </div>
+		<% end %>
 	  <%= yield %>
 	</div>
 </div>

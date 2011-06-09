@@ -11,6 +11,8 @@ gem 'capistrano'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'bluecloth'
+gem 'RedCloth', '~>4.2'
+gem 'rdoc', '~> 3', :require => 'rdoc/markup/to_html'
 gem 'whenever', :require => false
 gem 'ptools'
 gem 'jquery-rails'

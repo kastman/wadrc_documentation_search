@@ -9,6 +9,10 @@ a, a.visited { color: #045290;}
 .search-banner { margin: 5em auto; background: #EEE; padding: 1em; text-align: center;}
 .search-banner h1 { color: #045290; font-size: 40px;}
 
+/* Flash Messages */
+.notice { color: green;}
+.error {color: red;}
+
 /* textfiles#index */
 .pretty {border-collapse:collapse; }
 .pretty td { padding: 5px; vertical-align: top; border: dashed 1px #CCC; }

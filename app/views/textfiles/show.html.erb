@@ -1,7 +1,11 @@
 <h2><%=h @textfile.filepath %></h2>
 <% case File.extname(@textfile.filepath) %>
-<% when /md|markdown|rdoc/i %>
+<% when /md|markdown/i %>
 	<%= BlueCloth.new(@textfile.content).to_html.html_safe %>
+<%  when /rdoc/i %>
+	<%= RDoc::Markup::ToHtml.new.convert(@textfile.content).html_safe %>
+<%  when /textile/i %>
+	<%= RedCloth.new(@textfile.content).to_html.html_safe %>
 <% when /rtf/i %>
 	<% str = '' %>
 	<%= puts RubyRTF::Parser.new.parse(@textfile.content).sections.each {|s| puts format(str, s)} %>
