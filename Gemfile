@@ -19,6 +19,7 @@ gem 'meta_where'
 gem 'meta_search'
 gem 'ruby-rtf'
 gem 'i18n'
+gem 'test-unit', '1.2.3'  # This is required in production for rake tasks (like migration)
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -38,7 +39,6 @@ gem 'i18n'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'ZenTest'
-  gem 'test-unit', '1.2.3'
   gem 'rspec-rails'
   gem 'webrat'
   gem 'factory_girl_rails', '~>1.0.1'
