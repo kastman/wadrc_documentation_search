@@ -10,13 +10,18 @@ EXCLUDED_PATHS = [
   '/Data/vtrak1/data1/fm_apps',
   '/Data/vtrak1/Backups.backupdb'
 ]
+EXCLUDED_FILE_EXTENSIONS = %w{.nii .pdf}
 
 namespace :crawler do
   desc "Crawl the filesystem looking for text files."
   task(:crawl_filesystem => :environment) do
     files = Find.match(:include_paths => INCLUDED_PATHS, :excluded_paths => EXCLUDED_PATHS) { |p| File.split(p)[1] =~ /(.*README.*|.*NOTE.*|.*JOURNAL.*)/i }
     files.each do |file| 
-      begin 
+      begin
+        # Skip Excluded Extensions.
+        # This is required because some binary files start with text info (NIfTI header) or shouldn't be supported (pdf)
+        next if EXCLUDED_FILE_EXTENSIONS.include? File.extname(file[:path])
+        
         f = Textfile.find_or_initialize_by_filepath(:filepath => file[:path], :content => file[:file_content], :owner => file[:owner], :accessed_at => Time.now, :modified_at => file[:modified_at] )
         verb = f.new_record? ? "Saved" : "Updated"
         if f.save
