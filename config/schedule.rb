@@ -19,6 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :job_template, "/bin/bash -l -c 'rvm use 1.9.2 && :job'"
+job_type :bundle_rake,    "cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
+
 every 1.day do
-  rake "crawler:crawl_filesystem"
+  bundle_rake "crawler:crawl_filesystem"
 end

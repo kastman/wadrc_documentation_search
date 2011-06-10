@@ -17,6 +17,7 @@ set :repository,  "git@github.com:kastman/wadrc_documentation_search.git"
 set :branch, "master"
 
 set :rvm_ruby_string, '1.9.2'
+set :whenever_command, "bundle exec whenever"
 
 default_environment['PATH'] = "/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin"
 
